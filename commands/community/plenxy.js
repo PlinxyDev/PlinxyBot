@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');
+const { color } = require('../../index');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -11,8 +12,8 @@ module.exports = {
     const uptime = formatUptime(process.uptime());
     
     const embed = new EmbedBuilder()
-      .setTitle('<:jem:1284621547323002992> Plinxy Info!')
-      .setColor('Blurple')
+      .setTitle('<:earth:1286361875046731848> Plinxy Info!')
+      .setColor(color)
       .setThumbnail(interaction.client.user.displayAvatarURL())
       .addFields(
         { name: 'Username:', value: interaction.client.user.username, inline: false },

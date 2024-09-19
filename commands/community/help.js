@@ -1,5 +1,6 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { EmbedBuilder } = require('discord.js');
+const { color } = require('../../index');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -20,14 +21,14 @@ module.exports = {
             { name: 'currenttime', description: 'Displays the current date and time in the specified timezone.' },
         ];
         const helpEmbed = new EmbedBuilder()
-            .setColor('Blurple')
-            .setTitle('<:jem:1284621547323002992> Help Commands')
+            .setColor(color)
+            .setTitle('<:earth:1286361875046731848> Help Commands')
             .setDescription('Here is a list of all available commands:')
             .setTimestamp();
             
         commands.forEach(cmd => {
             helpEmbed.addFields({
-                name: `**/${cmd.name}**`,
+                name: `> **/${cmd.name}**`,
                 value: `> ${cmd.description}`,
                 inline: false
             });

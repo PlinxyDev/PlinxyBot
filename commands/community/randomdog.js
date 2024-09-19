@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { color } = require('../../index');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -13,7 +14,7 @@ module.exports = {
 
             const dogEmbed = new EmbedBuilder()
                 .setImage(data.message)
-                .setColor('#c733ff')
+                .setColor(color)
                 .setTimestamp();
 
             await interaction.reply({ embeds: [dogEmbed] });

@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require('discord.js');
+const { color } = require('../../index');
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -34,8 +35,8 @@ module.exports = {
     const text = interaction.options.getString('text');
 
     const embed = new EmbedBuilder()
-      .setColor('#c733ff')
-      .setTitle('<:Rocket2:1282713816194486303> Direct Message')
+      .setColor(color)
+      .setTitle('<:earth:1286361875046731848> Direct Message')
       .setDescription(text)
       .setTimestamp();
 

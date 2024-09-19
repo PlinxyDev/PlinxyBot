@@ -1,6 +1,7 @@
 const { SlashCommandBuilder } = require('@discordjs/builders');
 const { DateTime } = require('luxon');
 const { EmbedBuilder } = require('discord.js');
+const { color } = require('../../index');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -26,8 +27,8 @@ module.exports = {
         const utcOffset = `UTC${sign}${Math.abs(offset).toString().padStart(2, '0')}:00`;
 
         const embed = new EmbedBuilder()
-            .setColor('Blurple') // Blurple color
-            .setTitle('<:jem:1284621547323002992> Current Date and Time')
+            .setColor(color) // Blurple color
+            .setTitle('<:earth:1286361875046731848> Current Date and Time')
             .addFields(
                 { name: 'Timezone', value: timezone, inline: false },
                 { name: 'Date and Time', value: formattedTime, inline: false },

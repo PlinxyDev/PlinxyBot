@@ -1,6 +1,9 @@
 const { Client, GatewayIntentBits, Partials, Collection } = require('discord.js');
 const eventHandler = require('./handlers/eventHandler');
 
+const color = "#0096FF"
+module.exports = { color };
+
 const client = new Client({
   intents: [
     GatewayIntentBits.Guilds,
@@ -38,4 +41,4 @@ client.once('ready', async () => {
 });
 
 
-client.login("Your_Bot_Token_Here");
+client.login("MTI4NDYwODMwMTkwODEwMzI3Ng.G6BcaE.SEWGwQnsHxy6K7EsiNyxaoIu8PTMp4mUArtawQ");

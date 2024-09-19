@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { color } = require('../../index');
 
 module.exports = {
     data: new SlashCommandBuilder()
@@ -8,8 +9,8 @@ module.exports = {
         const { guild } = interaction; 
         const totalMembers = guild.memberCount; 
         const memberCountEmbed = new EmbedBuilder()
-            .setColor("Blurple") // Set the color of the embed
-            .setTitle('<:cog:1284616671646191646> Server Member Count:')
+            .setColor(color) // Set the color of the embed
+            .setTitle('<:earth:1286361875046731848> Server Member Count:')
             .setDescription(`This server has **${totalMembers}** members!`)
             .setTimestamp(); 
         await interaction.reply({ embeds: [memberCountEmbed] });
