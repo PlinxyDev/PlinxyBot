@@ -74,7 +74,6 @@ If everything is set up correctly, you should see the bot go online in your Disc
 If you encounter any issues, make sure to check:
 
 - The Node.js and npm versions (use `node -v` and `npm -v` to verify).
-- Your bot token in the `.env` file.
 - The bot permissions in the Discord Developer Portal.
 
 Now you're all set to start using and developing PlinxyBot!
