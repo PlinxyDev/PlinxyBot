@@ -41,4 +41,4 @@ client.once('ready', async () => {
 });
 
 
-client.login("MTI4NDYwODMwMTkwODEwMzI3Ng.G6BcaE.SEWGwQnsHxy6K7EsiNyxaoIu8PTMp4mUArtawQ");
+client.login("token_here");
