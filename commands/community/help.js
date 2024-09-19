@@ -19,6 +19,7 @@ module.exports = {
             { name: 'dmuser', description: 'Sends a DM message to a selected user in the form of an embed.' },
             { name: 'embedbuilder', description: 'Create a custom embed.' },
             { name: 'currenttime', description: 'Displays the current date and time in the specified timezone.' },
+            { name: 'coinflip', description: 'Flips a coin.' },
         ];
         const helpEmbed = new EmbedBuilder()
             .setColor(color)
