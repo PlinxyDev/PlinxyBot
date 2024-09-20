@@ -40,4 +40,4 @@ client.once('ready', async () => {
   });
 });
 
-client.login("MTI4NDYwODMwMTkwODEwMzI3Ng.GQ04XL.yHaNP8kOmjyPc5wWYBHgPdHuHRzxhQapIy9PE8");
+client.login("token_here");
