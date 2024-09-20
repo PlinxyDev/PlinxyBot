@@ -1,4 +1,5 @@
 const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const axios = require('axios');
 const { color } = require('../../index');
 
 module.exports = {
@@ -6,20 +7,20 @@ module.exports = {
     .setName('fact')
     .setDescription('Get a random interesting fact!'),
   run: async (client, interaction) => {
-    const facts = [
-      "Honey never spoils.",
-      "A group of flamingos is called a 'flamboyance'.",
-      "Octopuses have three hearts.",
-      "Bananas are berries, but strawberries aren't.",
-      "The Eiffel Tower can be 15 cm taller during the summer."
-    ];
-    const randomFact = facts[Math.floor(Math.random() * facts.length)];
-    const embed = new EmbedBuilder()
-      .setColor(color)
-      .setTitle('<:earth:1266806158681833544> Did You Know?')
-      .setDescription(randomFact)
-      .setTimestamp()
-      .setFooter({ text: 'Random Facts' });
-    await interaction.reply({ embeds: [embed] });
+    try {
+      const response = await axios.get('https://uselessfacts.jsph.pl/random.json?language=en');
+      const randomFact = response.data.text;
+
+      const embed = new EmbedBuilder()
+        .setColor(color)
+        .setTitle('<:earth:1266806158681833544> Did You Know?')
+        .setDescription(randomFact)
+        .setTimestamp()
+
+      await interaction.reply({ embeds: [embed] });
+    } catch (error) {
+      console.error('Error fetching the random fact:', error);
+      await interaction.reply({ content: 'Oops! Something went wrong while fetching a fact. Please try again later.', ephemeral: true });
+    }
   },
 };
