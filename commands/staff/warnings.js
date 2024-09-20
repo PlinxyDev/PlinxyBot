@@ -17,12 +17,8 @@ module.exports = {
   run: async (client, interaction) => {
     const target = interaction.options.getUser("target");
 
-    if (!interaction.member.permissions.has("ADMINISTRATOR")) {
-      return interaction.reply({
-        content:
-          "You do not have the required permissions to use this command.",
-        ephemeral: true,
-      });
+    if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+      return interaction.reply({ content: "You do not have the required permissions to use this command.", ephemeral: true });
     }
 
     let warnings = (await db.get(`warnings_${target.id}`)) || [];
