@@ -6,11 +6,11 @@ const { color } = require('../../index');
 module.exports = {
   data: new SlashCommandBuilder()
     .setName('warnings')
-    .setDescription('View a user\'s warnings')
+    .setDescription("View a user's warnings")
     .addUserOption(option => 
-        option.setName('target')
-            .setDescription('User to check warnings for')
-            .setRequired(true)
+      option.setName('target')
+        .setDescription('User to check warnings for')
+        .setRequired(true)
     ),
 
   run: async (client, interaction) => {
@@ -36,7 +36,7 @@ module.exports = {
       warnEmbed.addFields({
         name: `Warning ${index + 1}`,
         value: `**Reason:** ${warning.reason}\n**Date:** ${warning.date}\n**Warned By:** ${warning.warnedBy}`,
-        inline: false
+        inline: false,
       });
     });
 
