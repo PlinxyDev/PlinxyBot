@@ -47,6 +47,8 @@ Now, you’ll need to install the required packages for the bot to function. Run
 ```bash
 npm install discord.js
 npm install luxon
+npm install quick.db
+npm install better-sqlite3
 ```
 
 This will ensure all necessary dependencies are installed.

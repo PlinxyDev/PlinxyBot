@@ -24,10 +24,9 @@ module.exports = {
         const formattedTime = now.toLocaleString(DateTime.DATETIME_FULL);
         const offset = now.offset / 60;
         const sign = offset >= 0 ? '+' : '-';
-        const utcOffset = `UTC${sign}${Math.abs(offset).toString().padStart(2, '0')}:00`;
 
         const embed = new EmbedBuilder()
-            .setColor(color) // Blurple color
+            .setColor(color) 
             .setTitle('<:earth:1286361875046731848> Current Date and Time')
             .addFields(
                 { name: 'Timezone', value: timezone, inline: false },
