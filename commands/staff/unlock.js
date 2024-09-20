@@ -11,6 +11,13 @@ const {
       .setDescription("Unlocks the current channel so anyone can talk."),
   
     run: async (client, interaction) => {
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+            await interaction.reply({
+              content: 'You do not have the required permissions to use this command.',
+              ephemeral: true,
+            });
+            return;
+          }
       const embed = new EmbedBuilder();
       const channel = interaction.channel;
   

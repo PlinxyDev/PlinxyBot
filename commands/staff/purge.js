@@ -10,9 +10,15 @@ module.exports = {
         .addIntegerOption(option => 
             option.setName('amount')
                 .setDescription('Number of messages to delete')
-                .setRequired(true))
-        .setDefaultMemberPermissions(PermissionFlagsBits.Administrator), // Require admin permissions
+                .setRequired(true)),
     run: async (client, interaction) => {
+        if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+            await interaction.reply({
+              content: 'You do not have the required permissions to use this command.',
+              ephemeral: true,
+            });
+            return;
+          }
         const amount = interaction.options.getInteger('amount');
         if (amount < 1 || amount > 100) {
             const errorEmbed = new EmbedBuilder()

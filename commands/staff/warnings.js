@@ -1,4 +1,4 @@
-const { SlashCommandBuilder, EmbedBuilder } = require('discord.js');
+const { SlashCommandBuilder, EmbedBuilder, PermissionsBitField } = require('discord.js');
 const { QuickDB } = require('quick.db');
 const db = new QuickDB();
 const { color } = require('../../index');
@@ -16,8 +16,8 @@ module.exports = {
   run: async (client, interaction) => {
     const target = interaction.options.getUser('target');
 
-    if (!interaction.member.permissions.has('ADMINISTRATOR')) {
-      return interaction.reply({ content: 'You need admin permissions to use this command.', ephemeral: true });
+    if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+      return interaction.reply({ content: "You do not have the required permissions to use this command.", ephemeral: true });
     }
 
     let warnings = await db.get(`warnings_${target.id}`) || [];
