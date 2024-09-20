@@ -1,7 +1,21 @@
-const { SlashCommandBuilder, EmbedBuilder } = require("discord.js");
+const {
+  SlashCommandBuilder,
+  EmbedBuilder,
+  PermissionsBitField,
+} = require("discord.js");
 const { QuickDB } = require("quick.db");
-const db = new QuickDB();
+const path = require("path");
+const fs = require("fs");
 const { color } = require("../../index");
+
+const databaseFolderPath = path.resolve(__dirname, "../../database");
+if (!fs.existsSync(databaseFolderPath)) {
+  fs.mkdirSync(databaseFolderPath, { recursive: true });
+}
+
+const db = new QuickDB({
+  filePath: path.join(databaseFolderPath, "json.sqlite"),
+});
 
 module.exports = {
   data: new SlashCommandBuilder()
@@ -22,9 +36,17 @@ module.exports = {
     const reason =
       interaction.options.getString("reason") || "No reason provided";
 
-      if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
-        return interaction.reply({ content: "You do not have the required permissions to use this command.", ephemeral: true });
-      }
+    if (
+      !interaction.member.permissions.has(
+        PermissionsBitField.Flags.Administrator
+      )
+    ) {
+      return interaction.reply({
+        content:
+          "You do not have the required permissions to use this command.",
+        ephemeral: true,
+      });
+    }
 
     let warnings = (await db.get(`warnings_${target.id}`)) || [];
     const newWarning = {
