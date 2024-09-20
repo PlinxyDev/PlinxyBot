@@ -44,6 +44,9 @@ module.exports = {
         .setColor(color)
         .setTitle("<:earth:1286361875046731848> Purged")
         .setDescription(`Purged ${amount} messages.`)
+        .setThumbnail(
+          "https://i.pinimg.com/originals/47/12/89/471289cde2490c80f60d5e85bcdfb6da.gif"
+        )
         .setTimestamp();
       return interaction.reply({ embeds: [successEmbed], ephemeral: true });
     } catch (error) {
