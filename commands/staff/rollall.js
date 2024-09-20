@@ -19,9 +19,14 @@ module.exports = {
         .setRequired(true)
     ),
   run: async (client, interaction) => {
-    if (!interaction.member.permissions.has(PermissionsBitField.Flags.Administrator)) {
+    if (
+      !interaction.member.permissions.has(
+        PermissionsBitField.Flags.Administrator
+      )
+    ) {
       return interaction.reply({
-        content: "You do not have the required permissions to use this command.",
+        content:
+          "You do not have the required permissions to use this command.",
         ephemeral: true,
       });
     }
@@ -29,7 +34,9 @@ module.exports = {
     const role = interaction.options.getRole("role");
     const embed = new EmbedBuilder()
       .setTitle("<:earth:1286361875046731848> Role All Confirmation")
-      .setDescription(`Are you sure you want to assign the role **${role.name}** to all members?`)
+      .setDescription(
+        `Are you sure you want to assign the role **${role.name}** to all members?`
+      )
       .setTimestamp()
       .setColor(color);
 
@@ -46,8 +53,13 @@ module.exports = {
       fetchReply: true,
     });
 
-    const filter = (i) => i.customId === "confirm_role_assignment" && i.user.id === interaction.user.id;
-    const collector = interaction.channel.createMessageComponentCollector({ filter, time: 15000 });
+    const filter = (i) =>
+      i.customId === "confirm_role_assignment" &&
+      i.user.id === interaction.user.id;
+    const collector = interaction.channel.createMessageComponentCollector({
+      filter,
+      time: 15000,
+    });
 
     collector.on("collect", async (i) => {
       await i.deferUpdate();
@@ -70,7 +82,9 @@ module.exports = {
 
         const resultEmbed = new EmbedBuilder()
           .setTitle("<:earth:1286361875046731848> Role All Complete")
-          .setDescription(`Successfully added **${role.name}** to ${successCount} members. Failed for ${failCount} members.`)
+          .setDescription(
+            `Successfully added **${role.name}** to ${successCount} members. Failed for ${failCount} members.`
+          )
           .setTimestamp()
           .setColor(color);
 
@@ -79,7 +93,9 @@ module.exports = {
       } catch (error) {
         const errorEmbed = new EmbedBuilder()
           .setTitle("<:earth:1286361875046731848> Role All Error")
-          .setDescription(`There was an error trying to assign the role: ${error.message}`)
+          .setDescription(
+            `There was an error trying to assign the role: ${error.message}`
+          )
           .setTimestamp()
           .setColor(color);
 
