@@ -36,7 +36,7 @@ module.exports = {
     await db.set(`warnings_${target.id}`, warnings);
 
     const removeWarnEmbed = new EmbedBuilder()
-      .setTitle('<:earth:1266806158681833544> Warning Removed')
+      .setTitle('<:earth:1286361875046731848> Warning Removed')
       .setDescription(`A warning has been removed from ${target.tag}.`)
       .addFields(
         { name: 'Remaining Warnings', value: `${warnings.length}` }
