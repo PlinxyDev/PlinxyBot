@@ -1,0 +1,20 @@
+{
+  "name": "plinxybot",
+  "version": "1.0.0",
+  "description": "**PlinxyBot** is an open-source and public Discord bot that anyone can use and customize. It’s a great starting point for developers looking to build their own Discord bots. Whether you’re new to bot development or experienced, PlinxyBot offers a solid foundation to help you get started quickly.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@discordjs/builders": "^1.9.0",
+    "better-sqlite3": "^11.3.0",
+    "discord.js": "^14.16.2",
+    "dotenv": "^16.4.5",
+    "luxon": "^3.5.0",
+    "quick.db": "^9.1.7"
+  }
+}
