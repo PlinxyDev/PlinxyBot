@@ -53,4 +53,7 @@ client.once("ready", async () => {
   });
 });
 
-client.login("token_here");
+client.login(
+  "token_here"
+);
+
